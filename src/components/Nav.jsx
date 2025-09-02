@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../assets/images/medi  .png";
+import Image from "../assets/images/medi.png";
 
 const Nav = () => {
   return (
