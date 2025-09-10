@@ -9,6 +9,7 @@ const DoctorsLayout = () => {
     <div>
       <section className='border-b flex justify-between px-[30px] items-center border-black/20 shadow'>
         <img src='./src/assets/images/logo.png' alt='' />
+        
         <section className=' flex gap-[36px] items-center '> 
           <section className='relative  w-[358px] h-[48px] '>
             <input

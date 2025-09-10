@@ -86,7 +86,7 @@ const Tab = ({ label, active }) => (
       className={`p-[8px] rounded-[8px] text-[16px] font-normal shadow-lg ${
         active
           ? "bg-[#D5C8F8] text-[#0F21E4] gap-[36px]"
-          : "flex flex-row bg-[#FFF] text-[#838383] hover:bg-gray-200 shadow-lg rounded-[8px] text-[16px] .readex"
+          : "flex flex-row bg-[#FFF] text-[#838383] hover:bg-gray-200 shadow-lg rounded-[8px] text-[16px] .readex relative right-[10%]" 
       }`}
     >
       {label}
@@ -136,7 +136,7 @@ export default function DoctorsStaff() {
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-3 mb-6 bg-[#EFE9FF] px-[20px] py-[10px]">
-        <Tab label="Doctors" active />
+        <Tab label="Doctors" active  />
         <Tab label="Nurses" />
         <Tab label="Lab Technician" />
         <Tab label="Pharmacy" />
@@ -146,12 +146,20 @@ export default function DoctorsStaff() {
       {/* Search + Filter */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
         <div className="flex items-center bg-white border rounded-lg px-3 py-2 w-full md:w-80">
-          <FiSearch className="text-gray-400 mr-2" />
+      
           <input
-            type="text"
-            placeholder="Search for doctors"
-            className="flex-1 outline-none text-sm"
-          />
+              type='search'
+              name='search'
+              id='search'
+              className=' rounded-[8px] bg-[#F7F6F9]  px-[50px] w-full h-full text-[#A49F9F]'
+              placeholder='Search for patients ID and more'
+            />
+             <Icon
+               icon={"mynaui:search"}
+               width={30}
+               height={30}
+               className='text-[#A49F9F] absolute left-[16px] top-[22%] '
+              />
         </div>
 
         <div className="flex gap-18 mt-[20px]">
