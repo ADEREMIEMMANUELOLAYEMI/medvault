@@ -48,11 +48,11 @@ const App = () => {
         <Route path='/patient-signup' element={<ReviewingInfo />} />
 
         <Route element={<DoctorsLayout />}>
-          <Route path=' ' element={<DoctorsDashboard />} />
+          <Route path='/DoctorsDashboard' element={<DoctorsDashboard />} />
           <Route path='/DoctorsDepartment' element={<DoctorsDepartment />} />
           <Route path='/doctorsstaff' element={<DoctorsStaff />} />
           <Route
-            path='/DepartmentManagement' 
+            path='/DepartmentManagement'
             element={<DepartmentManagement />}
           />
           <Route path="/DoctorsPatient" element={<DoctorsPatient/>}/>
