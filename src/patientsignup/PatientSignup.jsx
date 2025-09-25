@@ -1,7 +1,7 @@
 // src/pages/PatientSignup.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import Patient from "../assets/images/patient.png"; // ✅ single image
+import Patient from '../assets/images/patience.png'; // ✅ single image
 
 const PatientSignup = () => {
   return (
@@ -20,7 +20,7 @@ const PatientSignup = () => {
         <div className="max-w-md w-full">
           {/* Title */}
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
-            Patient Sign Up
+            Patient Sign 
           </h2>
           <p className="text-gray-500 mb-8 text-center md:text-left">
             Use your information to sign into your account.

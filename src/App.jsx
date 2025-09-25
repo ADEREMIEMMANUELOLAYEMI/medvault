@@ -230,7 +230,7 @@ import Prescriptions from "./doctors/Prescriptions";
 import Addlabs from "./doctors/Addlabs";
 import RequestSpecialist from "./doctors/RequestSpecialist";
 
-import PatientSignup from "./patientsignup/PatientSignup";
+// import PatientSignup from "./patientsignup/PatientSignup";
 import PatientsLayout from "./patientsignup/PatientsLayout";
 import ReceptionistDashboard from "./patientsignup/ReceiptionistDashboard"
 
@@ -260,7 +260,7 @@ const App = () => {
         <Route path="/ReviewingInfo" element={<ReviewingInfo />} />
         <Route path="/HealthSpecialist" element={<HealthSpecialist />} />
         <Route path="/HealthSpecialistSignin" element={<HealthSpecialistSignin />} />
-        <Route path="/PatientSignup" element={<PatientSignup />} />
+        {/* <Route path="/PatientSignup" element={<PatientSignup />} /> */}
 
         {/* Doctors Dashboard */}
         <Route element={<DoctorsLayout />}>
