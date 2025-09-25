@@ -17,13 +17,13 @@ const roles = [
     title: "Health Specialist",
     description: "Access your account as a doctor with your valid credentials",
     icon: "mdi:nurse",
-    link: "/specialist-signup", // ✅ route for specialist signup
+    link: "/HealthSpecialist", // ✅ route for specialist signup
   },
   {
     title: "Patients",
     description: "Access your account as a Patient with your valid credentials",
     icon: "healthicons:symptom-sick",
-    link: "/first", // ✅ route for patient signup
+    link: "/PatientSignup", // ✅ route for patient signup
   },
 ];
 

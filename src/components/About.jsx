@@ -5,17 +5,18 @@ import Guardian from "../assets/images/guardian.png";
 
 const About = () => {
   return (
-    <main className='bg-[#FFFFFF] px-6 md:px-20 lg:px-32 py-12 w-fit h-[795px]'>
+    <main className='bg-[#FFFFFF] px-6 md:px-20 lg:px-32 py-12  h-[795px]'>
       {/* About Med-Vault Section */}
       <section className='mb-20'>
-        <h2 className=' md:text-3xl font-medium inter text-center mb-[12px] text-[#000000] leading-[42px] text-[32px] .inter'>
+        <h2 className=' md:text-3xl font-medium inter text-center mb-[12px] text-[#000000] leading-[42px] text-[32px] .inter max-w-[-5px]'>
           About Med-Vault
         </h2>
         <p className='text-center  mx-auto text-[20px] text-[#2E2E2E] leading-[32px] mb-[64px] inter font-normal  h-[54px] .inter  '>
-          <span className='whitespace-nowrap inter'>
-            We are a health technology company dedicated to connecting
-            hospitals,healthcare professionals,
-          </span>
+         <span className="inter block px-[10px] text-center">
+  We are a health technology company dedicated to connecting hospitals,
+  healthcare professionals,
+</span>
+
 
           <span className='block inter'>
             and patients through a single, secure Patient ID system.
@@ -24,7 +25,7 @@ const About = () => {
 
         <div className='grid md:grid-cols-2 mr-30 space-x-20 items-center gap-[8px]  '>
           {/* Image */}
-          <div className='flex justify-center'>
+          <div className='flex justify-center items-center'>
             <img
               src={Guardian}
               alt='Doctor with patient'

@@ -76,7 +76,7 @@ export default function HospitalSignUp() {
               Previous
             </button>
             <Link
-            to='/Reviewing'>
+            to='/ReviewingInfo'>
             <button className="px-6 py-2 rounded-lg bg-blue-700 text-white hover:bg-blue-800">
               Upload
             </button>

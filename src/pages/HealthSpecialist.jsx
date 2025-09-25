@@ -1,19 +1,41 @@
+
+
 // src/pages/HealthSpecialistLogin.jsx
 import React, { useState } from "react";
-import Specilaist from "../../src/assets/images/specialist.png"; // replace with your real images
+import { Link } from "react-router-dom"; // ✅ Import Link
+import Specilaist from "../../src/assets/images/specialist.png"; // your image
 
-const HealthSpecialistLogin = () => {
+const HealthSpecialist = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [Doctor1, Doctor2, Doctor3];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  // Only one slide for now
+  const slides = [Specilaist];
 
   return (
     <div className="flex h-screen w-full bg-white">
-      {/* Left Section (Form) */}
+      {/* Left Section (Slider) → moved here */}
+      <div className="hidden md:flex w-1/2 relative items-center justify-center">
+        <img
+          src={slides[currentSlide]}
+          alt="Specialist"
+          className="h-full w-full object-cover transition-all duration-500"
+        />
+
+        {/* Dots */}
+        <div className="absolute bottom-4 flex space-x-2">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className={`w-3 h-3 rounded-full ${
+                currentSlide === idx ? "bg-indigo-600" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Right Section (Form) → moved here */}
       <div className="w-full md:w-1/2 flex items-center justify-center px-6 md:px-16 lg:px-24">
         <div className="max-w-md w-full">
           {/* Title */}
@@ -87,40 +109,19 @@ const HealthSpecialistLogin = () => {
             </div>
 
             {/* Button */}
-            <button
-              type="button"
-              onClick={nextSlide}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium"
-            >
-              Log In
-            </button>
+            <Link to="/HealthSpecialistSignin"> {/* ✅ Fixed spelling */}
+              <button
+                type="button"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium"
+              >
+                Log In
+              </button>
+            </Link>
           </form>
-        </div>
-      </div>
-
-      {/* Right Section (Slider) */}
-      <div className="hidden md:flex w-1/2 relative items-center justify-center">
-        <img
-          src={Specilaist}
-          alt="Specialist"
-          className="h-full w-full object-cover transition-all duration-500"
-        />
-
-        {/* Dots */}
-        <div className="absolute bottom-4 flex space-x-2">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`w-3 h-3 rounded-full ${
-                currentSlide === idx ? "bg-indigo-600" : "bg-gray-300"
-              }`}
-            />
-          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default HealthSpecialistLogin;
+export default HealthSpecialist;

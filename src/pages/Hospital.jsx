@@ -68,7 +68,7 @@ const Hospital = () => {
             {/* Hospital License Number */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Hospital License Number
+                Hospital License image
               </label>
               <input
                 type="text"
