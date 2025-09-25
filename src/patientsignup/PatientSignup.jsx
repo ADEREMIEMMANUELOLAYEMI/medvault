@@ -1,7 +1,7 @@
 // src/pages/PatientSignup.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import Patients from "../assets/images/patients.png"; // ✅ single image
+import Patient from "../assets/images/patient.png"; // ✅ single image
 
 const PatientSignup = () => {
   return (
@@ -9,7 +9,7 @@ const PatientSignup = () => {
       {/* Left Section (Static Image) */}
       <div className="hidden md:flex w-1/2 relative">
         <img
-          src={Patients}
+          src={Patient}
           alt="Patient"
           className="h-full w-full object-cover"
         />
@@ -68,6 +68,7 @@ const PatientSignup = () => {
             </div>
 
             {/* Submit Button */}
+            <Link to={"/ReceptionistDashboard"}>
             <button
               type="submit"
               className="w-full bg-indigo-600 hover:bg-indigo-700 
@@ -75,6 +76,7 @@ const PatientSignup = () => {
             >
               Next
             </button>
+            </Link>
           </form>
 
           {/* Footer Link */}
