@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { FiFilter, FiMoreVertical } from "react-icons/fi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Icon } from "@iconify/react";
-import NewStaff from "../../src/newdepartments/NewStaff";
+import NewStaff from "./newdepartments/NewStaff"; // ✅ cleaner import
 
 const staffData = [
   {
     id: "12345-SEC",
     name: "Femi Yakubu Sam",
-    dept: "Cardiology",
+    dept: "Doctors",
     status: "Active",
     phone: "+234 8107929290",
     avatar: "https://i.pravatar.cc/150?img=3",
@@ -17,7 +17,7 @@ const staffData = [
   {
     id: "12346-SEC",
     name: "Jane Doe",
-    dept: "Nursing",
+    dept: "Nurses",
     status: "Inactive",
     phone: "+234 8012345678",
     avatar: "https://i.pravatar.cc/150?img=5",
@@ -25,15 +25,17 @@ const staffData = [
   {
     id: "12347-SEC",
     name: "Ahmed Musa",
-    dept: "Lab Tech",
+    dept: "Lab Technician",
     status: "Active",
     phone: "+234 8098765432",
     avatar: "https://i.pravatar.cc/150?img=7",
   },
 ];
 
-const Tab = ({ label, active }) => (
+// ✅ Tab Component
+const Tab = ({ label, active, onClick }) => (
   <button
+    onClick={onClick}
     className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
       active
         ? "bg-[#D5C8F8] text-[#0F21E4]"
@@ -44,6 +46,7 @@ const Tab = ({ label, active }) => (
   </button>
 );
 
+// ✅ Status Badge
 const StatusBadge = ({ status }) => {
   const base =
     "px-3 py-1 rounded-lg text-xs font-medium flex items-center justify-center";
@@ -56,6 +59,12 @@ const StatusBadge = ({ status }) => {
 
 export default function DoctorsStaff() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Doctors");
+
+  // ✅ Filter staff by active tab
+  const filteredStaff = staffData.filter((staff) => staff.dept === activeTab);
+
+  const tabs = ["Doctors", "Nurses", "Lab Technician", "Pharmacy", "Receptionist"];
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-6">
@@ -73,7 +82,7 @@ export default function DoctorsStaff() {
           onClick={() => setIsModalOpen(true)}
           className="bg-[#2C26DB] text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm md:text-base"
         >
-          + Add Health Worker
+          + Add Staff
         </button>
       </div>
 
@@ -82,16 +91,18 @@ export default function DoctorsStaff() {
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-3 mb-6 bg-[#EFE9FF] px-4 py-2 rounded-lg">
-        <Tab label="Doctors" active />
-        <Tab label="Nurses" />
-        <Tab label="Lab Technician" />
-        <Tab label="Pharmacy" />
-        <Tab label="Receptionist" />
+        {tabs.map((tab) => (
+          <Tab
+            key={tab}
+            label={tab}
+            active={activeTab === tab}
+            onClick={() => setActiveTab(tab)}
+          />
+        ))}
       </div>
 
       {/* Search + Filter */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
-        {/* Search */}
         <div className="relative flex items-center w-full md:w-80">
           <Icon
             icon="mynaui:search"
@@ -106,7 +117,6 @@ export default function DoctorsStaff() {
           />
         </div>
 
-        {/* Filter + Sort */}
         <div className="flex gap-3">
           <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-lg text-sm text-[#838383] hover:bg-gray-100">
             <FiFilter className="mr-2 text-[#2C2C2C]" /> Filter
@@ -129,54 +139,52 @@ export default function DoctorsStaff() {
           <thead className="bg-gray-50 sticky top-0">
             <tr>
               <th className="p-3 text-left text-[#717074] font-normal">#</th>
-              <th className="p-3 text-left text-[#717074] font-normal">
-                Staff ID
-              </th>
+              <th className="p-3 text-left text-[#717074] font-normal">Staff ID</th>
               <th className="p-3 text-left text-[#717074] font-normal">Name</th>
-              <th className="p-3 text-left text-[#717074] font-normal">
-                Department
-              </th>
-              <th className="p-3 text-left text-[#717074] font-normal">
-                Status
-              </th>
-              <th className="p-3 text-left text-[#717074] font-normal">
-                Phone no
-              </th>
-              <th className="p-3 text-left text-[#717074] font-normal">
-                Action
-              </th>
+              <th className="p-3 text-left text-[#717074] font-normal">Department</th>
+              <th className="p-3 text-left text-[#717074] font-normal">Status</th>
+              <th className="p-3 text-left text-[#717074] font-normal">Phone no</th>
+              <th className="p-3 text-left text-[#717074] font-normal">Action</th>
             </tr>
           </thead>
           <tbody>
-            {staffData.map((staff, i) => (
-              <tr
-                key={i}
-                className="border-t hover:bg-gray-50 transition-colors"
-              >
-                <td className="p-3">
-                  <input type="checkbox" />
-                </td>
-                <td className="p-3 text-[#717074]">{staff.id}</td>
-                <td className="p-3 flex items-center gap-2 text-[#333]">
-                  <img
-                    src={staff.avatar}
-                    alt={staff.name}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  {staff.name}
-                </td>
-                <td className="p-3 text-[#717074]">{staff.dept}</td>
-                <td className="p-3">
-                  <StatusBadge status={staff.status} />
-                </td>
-                <td className="p-3 text-[#717074]">{staff.phone}</td>
-                <td className="p-3">
-                  <button className="p-1 hover:bg-gray-100 rounded-full">
-                    <FiMoreVertical />
-                  </button>
+            {filteredStaff.length > 0 ? (
+              filteredStaff.map((staff, i) => (
+                <tr
+                  key={i}
+                  className="border-t hover:bg-gray-50 transition-colors"
+                >
+                  <td className="p-3">
+                    <input type="checkbox" />
+                  </td>
+                  <td className="p-3 text-[#717074]">{staff.id}</td>
+                  <td className="p-3 flex items-center gap-2 text-[#333]">
+                    <img
+                      src={staff.avatar}
+                      alt={staff.name}
+                      className="w-8 h-8 rounded-full"
+                    />
+                    {staff.name}
+                  </td>
+                  <td className="p-3 text-[#717074]">{staff.dept}</td>
+                  <td className="p-3">
+                    <StatusBadge status={staff.status} />
+                  </td>
+                  <td className="p-3 text-[#717074]">{staff.phone}</td>
+                  <td className="p-3">
+                    <button className="p-1 hover:bg-gray-100 rounded-full">
+                      <FiMoreVertical />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="p-4 text-center text-gray-500">
+                  No staff in {activeTab}
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

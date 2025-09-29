@@ -1,15 +1,25 @@
 // src/pages/HealthSpecialistLogin.jsx
-import React, { useState } from "react";
-import Specialist from "../../src/assets/images/specialist.png"; // ✅ fixed spelling
+import React, { useState, useEffect } from "react";
+import Specialist from "../../src/assets/images/specialist.png";
 
-const HealthSpecialist = () => {
+const HealthSpecialistLogin = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [Specialist]; // can add more later
 
-  // You can add more images later if needed
-  const slides = [Specialist];
+  const [formData, setFormData] = useState({
+    type: "Doctor",
+    hospital: "Jos University Teaching Hospital (JUTH)",
+    email: "",
+  });
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login data:", formData);
+    // TODO: add login API or navigation
   };
 
   return (
@@ -21,7 +31,6 @@ const HealthSpecialist = () => {
           alt="Health Specialist"
           className="h-full w-full object-cover transition-all duration-500"
         />
-
         {/* Dots */}
         <div className="absolute bottom-4 flex space-x-2">
           {slides.map((_, idx) => (
@@ -40,7 +49,6 @@ const HealthSpecialist = () => {
       {/* Right Section (Form) */}
       <div className="flex w-full md:w-1/2 items-center justify-center px-6 md:px-16 lg:px-24">
         <div className="max-w-md w-full">
-          {/* Title */}
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
             Health Specialist Sign In
           </h2>
@@ -48,16 +56,21 @@ const HealthSpecialist = () => {
             Use your information to sign into your account.
           </p>
 
-          {/* Form */}
-          <form className="space-y-5">
-            {/* Health Specialist Type */}
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            {/* Specialist Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="type"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Health Specialist Type
               </label>
               <select
+                id="type"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none"
-                defaultValue="Doctor"
               >
                 <option>Doctor</option>
                 <option>Nurse</option>
@@ -67,12 +80,18 @@ const HealthSpecialist = () => {
 
             {/* Hospital */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="hospital"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Hospital
               </label>
               <select
+                id="hospital"
+                name="hospital"
+                value={formData.hospital}
+                onChange={handleChange}
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none"
-                defaultValue="Jos University Teaching Hospital (JUTH)"
               >
                 <option>Jos University Teaching Hospital (JUTH)</option>
                 <option>Abuja National Hospital</option>
@@ -82,20 +101,26 @@ const HealthSpecialist = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <input
+                id="email"
+                name="email"
                 type="email"
-                defaultValue="josuniversityhospital@gmail.com"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none"
               />
             </div>
 
             {/* Button */}
             <button
-              type="button"
-              onClick={nextSlide}
+              type="submit"
               className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium"
             >
               Log In
@@ -107,4 +132,4 @@ const HealthSpecialist = () => {
   );
 };
 
-export default HealthSpecialist;
+export default HealthSpecialistLogin;

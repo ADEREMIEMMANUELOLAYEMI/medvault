@@ -24,10 +24,10 @@ export default function HospitalSignUp() {
       <div className="w-full md:w-1/2 flex items-center justify-center bg-white px-4 sm:px-6 md:px-10 py-8 md:py-0">
         <div className="w-full max-w-md">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
             Hospital Sign Up
           </h2>
-          <p className="text-gray-600 mb-6 text-center md:text-left">
+          <p className="text-sm sm:text-base text-gray-600 mb-6 text-center md:text-left">
             Upload your hospital license to continue.
           </p>
 
@@ -48,6 +48,7 @@ export default function HospitalSignUp() {
                 htmlFor="fileUpload"
                 className="flex flex-col items-center justify-center cursor-pointer"
               >
+                {/* Upload Icon */}
                 <svg
                   className="w-10 h-10 mb-2 text-gray-400"
                   fill="none"
@@ -62,7 +63,9 @@ export default function HospitalSignUp() {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6H16a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-gray-500">Click to upload or drag & drop</p>
+                <p className="text-gray-500 text-sm sm:text-base">
+                  Click to upload or drag & drop
+                </p>
                 <p className="text-xs text-gray-400">JPG, JPEG, PNG (max 10MB)</p>
               </label>
             </div>
@@ -86,7 +89,7 @@ export default function HospitalSignUp() {
           </div>
 
           {/* Footer */}
-          <p className="mt-6 text-center text-gray-600">
+          <p className="mt-6 text-center text-gray-600 text-sm sm:text-base">
             Already have an Account?{" "}
             <a href="/login" className="text-blue-600 font-medium hover:underline">
               Log In

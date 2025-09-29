@@ -238,23 +238,23 @@ export default function DoctorsDashboard() {
           return (
             <div
               key={i}
-              className="bg-white shadow rounded-lg p-4 flex flex-col justify-between"
+              className="bg-white shadow rounded-lg p-4 flex flex-col justify-between overflow-hidden"
             >
-              <div>
-                <h2 className="text-sm text-gray-600">{card.title}</h2>
-                <p className="font-semibold text-2xl md:text-3xl text-gray-800 mt-1">
+              <div className="flex flex-col flex-grow min-w-0">
+                <h2 className="text-sm text-gray-600 truncate">{card.title}</h2>
+                <p className="font-semibold text-2xl md:text-3xl text-gray-800 mt-1 truncate">
                   {card.value}
                 </p>
                 {card.change && (
-                  <span className="text-xs md:text-sm text-gray-500">
+                  <span className="text-xs md:text-sm text-gray-500 truncate">
                     {card.change}
                   </span>
                 )}
               </div>
               <div
-                className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full mt-3 ${card.iconBg}`}
+                className={`w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full mt-3 shrink-0 ${card.iconBg}`}
               >
-                <IconComponent className={`w-6 h-6 ${card.iconColor}`} />
+                <IconComponent className={`w-5 h-5 md:w-6 md:h-6 ${card.iconColor}`} />
               </div>
             </div>
           );
@@ -263,7 +263,7 @@ export default function DoctorsDashboard() {
 
       {/* ✅ Chart Section */}
       <div className="bg-white shadow rounded-xl p-4 md:p-6 mb-6">
-        <h3 className="font-medium mb-4 text-sm md:text-base text-gray-700">
+        <h3 className="font-medium mb-4 text-sm md:text-base text-gray-700 truncate">
           Active Patients
         </h3>
         <div className="w-full h-64 md:h-80">
@@ -273,7 +273,11 @@ export default function DoctorsDashboard() {
               <XAxis dataKey="name" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} />
               <Tooltip />
-              <Bar dataKey="patients" fill="url(#colorUv)" radius={[4, 4, 0, 0]} />
+              <Bar
+                dataKey="patients"
+                fill="url(#colorUv)"
+                radius={[4, 4, 0, 0]}
+              />
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#2C26DBF0" stopOpacity={0.9} />
@@ -293,18 +297,22 @@ export default function DoctorsDashboard() {
             Quick Actions
           </h3>
           <div className="space-y-3">
-            <button className="w-full py-2 px-4 rounded-lg bg-indigo-600 text-white text-sm md:text-base hover:bg-indigo-700">
-              Add New Staff Member
-            </button>
-            <button className="w-full py-2 px-4 rounded-lg border border-gray-300 text-sm md:text-base hover:bg-gray-100">
-              Manage Departments
-            </button>
-            <button className="w-full py-2 px-4 rounded-lg border border-gray-300 text-sm md:text-base hover:bg-gray-100">
-              View Appointments
-            </button>
-            <button className="w-full py-2 px-4 rounded-lg border border-gray-300 text-sm md:text-base hover:bg-gray-100">
-              Hospital Settings
-            </button>
+            {[
+              "Add New Staff Member",
+              "Manage Departments",
+              "View Appointments",
+              "Hospital Settings",
+            ].map((action, i) => (
+              <button
+                key={i}
+                className="w-full py-2 px-4 rounded-lg text-sm md:text-base truncate
+                           bg-indigo-600 text-white hover:bg-indigo-700 
+                           border border-transparent 
+                           disabled:opacity-50"
+              >
+                {action}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -312,7 +320,10 @@ export default function DoctorsDashboard() {
         <div className="bg-white shadow rounded-xl p-4 md:p-6">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-base font-medium text-gray-700">Notifications</h3>
-            <a href="#" className="text-indigo-600 text-sm hover:underline">
+            <a
+              href="#"
+              className="text-indigo-600 text-sm hover:underline whitespace-nowrap"
+            >
               View all
             </a>
           </div>
@@ -320,14 +331,17 @@ export default function DoctorsDashboard() {
             {Array(3)
               .fill()
               .map((_, i) => (
-                <div key={i} className="border-b pb-2">
-                  <p className="font-medium text-indigo-600 text-sm md:text-base">
+                <div
+                  key={i}
+                  className="border-b pb-2 last:border-none overflow-hidden"
+                >
+                  <p className="font-medium text-indigo-600 text-sm md:text-base truncate">
                     New Doctor Created
                   </p>
-                  <p className="text-gray-500 text-xs md:text-sm">
+                  <p className="text-gray-500 text-xs md:text-sm truncate">
                     Doctor Moses James has been added
                   </p>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-400 block">
                     22 Apr 3:24PM
                   </span>
                 </div>
@@ -338,4 +352,3 @@ export default function DoctorsDashboard() {
     </div>
   );
 }
-

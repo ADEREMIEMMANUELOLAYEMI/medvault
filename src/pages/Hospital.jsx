@@ -5,12 +5,12 @@ import Attendance from "../../src/assets/images/attendance.png";
 const Hospital = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full">
-      {/* Left Image Section (hidden on mobile/tablet) */}
-      <div className="hidden lg:block w-1/2 relative">
+      {/* Left Image Section */}
+      <div className="w-full lg:w-1/2 relative">
         <img
           src={Attendance}
           alt="Healthcare staff"
-          className="h-full w-full object-cover"
+          className="h-60 w-full object-cover lg:h-full"
         />
       </div>
 
@@ -29,10 +29,16 @@ const Hospital = () => {
           <form className="space-y-5">
             {/* Hospital Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="hospitalName"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Hospital Name
               </label>
-              <select className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none">
+              <select
+                id="hospitalName"
+                className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none"
+              >
                 <option>Jos University Teaching Hospital (JUTH)</option>
                 <option>Abuja National Hospital</option>
                 <option>Lagos State Teaching Hospital</option>
@@ -41,10 +47,14 @@ const Hospital = () => {
 
             {/* Email Address */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <input
+                id="email"
                 type="email"
                 defaultValue="josuniversityhospital@gmail.com"
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none"
@@ -53,10 +63,14 @@ const Hospital = () => {
 
             {/* Address */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="address"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Address
               </label>
               <input
+                id="address"
                 type="text"
                 defaultValue="Rayfield Road, Jos, Plateau State."
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none"
@@ -65,10 +79,14 @@ const Hospital = () => {
 
             {/* Hospital License Upload */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="license"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Hospital License Image
               </label>
               <input
+                id="license"
                 type="file"
                 accept="image/*"
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100"
@@ -89,12 +107,12 @@ const Hospital = () => {
           {/* Footer Text */}
           <p className="text-sm text-gray-600 mt-6 text-center">
             Already have an Account?{" "}
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="text-blue-600 font-medium hover:underline"
             >
               Log In
-            </a>
+            </Link>
           </p>
         </div>
       </div>

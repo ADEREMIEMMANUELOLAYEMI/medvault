@@ -1,13 +1,13 @@
 // src/pages/PatientSignup.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import Patient from '../assets/images/patient.png'; // ✅ single image
+import Patient from "../assets/images/patient.png"; // ✅ single image
 
 const PatientSignup = () => {
   return (
-    <div className="flex h-screen w-full bg-white">
-      {/* Left Section (Static Image) */}
-      <div className="hidden md:flex w-1/2 relative">
+    <div className="flex flex-col md:flex-row h-screen w-full bg-white">
+      {/* Left Section (Image - hidden on mobile) */}
+      <div className="hidden md:flex md:w-1/2 relative">
         <img
           src={Patient}
           alt="Patient"
@@ -16,14 +16,14 @@ const PatientSignup = () => {
       </div>
 
       {/* Right Section (Form) */}
-      <div className="w-full md:w-1/2 flex items-center justify-center px-6 md:px-16 lg:px-24">
+      <div className="w-full md:w-1/2 flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-10 md:py-0">
         <div className="max-w-md w-full">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
-            Patient Sign 
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
+            Patient Sign Up
           </h2>
-          <p className="text-gray-500 mb-8 text-center md:text-left">
-            Use your information to sign into your account.
+          <p className="text-sm sm:text-base text-gray-500 mb-8 text-center md:text-left">
+            Use your information to create your account.
           </p>
 
           {/* Form */}
@@ -57,7 +57,7 @@ const PatientSignup = () => {
             {/* Required For */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Required for
+                Required For
               </label>
               <input
                 type="text"
@@ -68,21 +68,21 @@ const PatientSignup = () => {
             </div>
 
             {/* Submit Button */}
-            <Link to={"/ReceptionistDashboard"}>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 
-              text-white py-2.5 rounded-lg shadow-md transition font-medium"
-            >
-              Next
-            </button>
+            <Link to="/ReceptionistDashboard">
+              <button
+                type="submit"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 
+                text-white py-2.5 rounded-lg shadow-md transition font-medium"
+              >
+                Next
+              </button>
             </Link>
           </form>
 
           {/* Footer Link */}
-          <p className="mt-6 text-sm text-gray-600 text-center">
+          <p className="mt-6 text-sm sm:text-base text-gray-600 text-center">
             Already have an account?{" "}
-            <Link to="/login" className="text-indigo-600 hover:underline">
+            <Link to="/login" className="text-indigo-600 font-medium hover:underline">
               Log In
             </Link>
           </p>
