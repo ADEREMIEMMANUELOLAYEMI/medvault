@@ -1,4 +1,3 @@
-// src/layouts/DoctorsLayout.jsx
 import { Icon } from "@iconify/react";
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
@@ -12,49 +11,43 @@ const DoctorsLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b flex items-center justify-between px-4 sm:px-6 py-3 border-black/20 shadow sticky top-0 bg-white z-20">
+      <header className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-black/20 shadow sticky top-0 bg-white z-20">
         {/* Logo */}
-        <img
-          src="./src/assets/images/logo.png"
-          alt="Logo"
-          className="w-24 sm:w-32 object-contain"
-        />
+        <img src="./src/assets/images/logo.png" alt="Logo" className="h-8 sm:h-10 w-auto" />
 
         {/* Right Section */}
-        <div className="flex items-center gap-3 sm:gap-6">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Search */}
-          <div className="relative hidden md:block w-56 lg:w-80">
+          <div className="relative w-36 sm:w-56 md:w-80 h-9 md:h-10 hidden md:block">
             <input
               type="search"
               id="search"
-              className="w-full h-10 rounded-lg bg-[#F7F6F9] pl-10 pr-3 text-sm text-[#A49F9F] focus:ring-2 focus:ring-indigo-500 outline-none"
               placeholder="Search for patients ID and more"
+              className="w-full h-full pl-9 pr-3 rounded-lg bg-[#F7F6F9] text-xs sm:text-sm md:text-base text-[#A49F9F] focus:ring-2 focus:ring-indigo-500 outline-none truncate"
             />
             <Icon
               icon="mynaui:search"
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A49F9F]"
-              width={20}
-              height={20}
+              width={18}
+              height={18}
+              className="absolute left-2 top-1/2 -translate-y-1/2 text-[#A49F9F]"
             />
           </div>
 
           {/* Notifications */}
-          <button className="relative">
-            <BellSvg />
-          </button>
+          <BellSvg className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer" />
 
           {/* Hospital Info */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="flex flex-col items-end">
-              <h1 className="text-sm sm:text-base font-medium">JUTH</h1>
-              <span className="bg-[#CFE2FF] border py-0.5 px-2 rounded-lg text-xs text-[#095194] border-[#61CCD0]">
+              <h1 className="text-xs sm:text-sm md:text-base font-medium truncate">JUTH</h1>
+              <span className="bg-[#CFE2FF] border border-[#61CCD0] py-0.5 px-2 rounded text-[10px] sm:text-xs md:text-sm text-[#095194] truncate">
                 Hospital
               </span>
             </div>
             <img
               src={Cross}
               alt="profile"
-              className="w-8 h-8 sm:w-10 sm:h-10 object-cover"
+              className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-cover rounded-full"
             />
           </div>
 
@@ -68,69 +61,37 @@ const DoctorsLayout = () => {
         </div>
       </header>
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <aside
-          className={`fixed md:static top-0 left-0 h-full w-64 bg-white shadow-md z-30 transform transition-transform duration-300 md:translate-x-0 ${
+          className={`fixed md:static top-0 left-0 h-full w-56 md:w-64 bg-white shadow-md z-30 transform transition-transform duration-300 md:translate-x-0 ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex flex-col h-full p-4 overflow-y-auto">
-            <h1 className="text-sm font-semibold text-[#717074] mb-4">
+          <div className="flex flex-col h-full p-3 md:p-6 overflow-y-auto">
+            <h1 className="text-sm md:text-base font-semibold text-[#717074] mb-4 truncate">
               Hospital Panel
             </h1>
 
-            <nav className="flex flex-col gap-2 text-sm">
+            <nav className="flex flex-col gap-2 text-sm md:text-base">
               {[
-                {
-                  to: "/DoctorsDashboard",
-                  icon: "material-symbols:dashboard-outline",
-                  label: "Dashboard",
-                },
-                {
-                  to: "/DoctorsDepartment",
-                  icon: "tabler:stack-filled",
-                  label: "Department Management",
-                },
-                {
-                  to: "/doctorsstaff",
-                  icon: "ion:people",
-                  label: "Staff Management",
-                },
-                {
-                  to: "/DoctorsPatient",
-                  icon: "ion:people",
-                  label: "Patient Management",
-                },
-                {
-                  to: "/DoctorsAppointment",
-                  icon: "streamline:waiting-appointments-calendar-solid",
-                  label: "Appointments",
-                },
-                {
-                  to: "/DoctorsPayments",
-                  icon: "zondicons:currency-dollar",
-                  label: "Payment Status",
-                },
-                {
-                  to: "/DoctorsSupport",
-                  icon: "streamline-plump:customer-support-7-solid",
-                  label: "Support & Compliance",
-                },
+                { to: "/DoctorsDashboard", icon: "material-symbols:dashboard-outline", label: "Dashboard" },
+                { to: "/DoctorsDepartment", icon: "tabler:stack-filled", label: "Department Management" },
+                { to: "/doctorsstaff", icon: "ion:people", label: "Staff Management" },
+                { to: "/DoctorsPatient", icon: "ion:people", label: "Patient Management" },
+                { to: "/DoctorsAppointment", icon: "streamline:waiting-appointments-calendar-solid", label: "Appointments" },
+                { to: "/DoctorsPayments", icon: "zondicons:currency-dollar", label: "Payment Status" },
+                { to: "/DoctorsSupport", icon: "streamline-plump:customer-support-7-solid", label: "Support & Compliance" },
               ].map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition ${
-                      isActive ? "bg-[#EFE9FF] text-[#2C26DB]" : "text-[#84828A]"
-                    }`
+                    `flex items-center gap-2 px-3 py-2 rounded-lg truncate transition 
+                    ${isActive ? "bg-[#EFE9FF] text-[#2C26DB]" : "text-[#84828A]"}`
                   }
                 >
-                  <Icon
-                    icon={item.icon}
-                    className="w-5 h-5 flex-shrink-0"
-                  />
+                  <Icon icon={item.icon} className="w-5 h-5 flex-shrink-0" />
                   <span className="truncate">{item.label}</span>
                 </NavLink>
               ))}
@@ -138,10 +99,10 @@ const DoctorsLayout = () => {
 
             {/* Footer */}
             <div className="mt-auto flex flex-col gap-3">
-              <BulbSvg />
+              <BulbSvg className="w-5 h-5 md:w-6 md:h-6" />
               <NavLink
-                to={"/"}
-                className="flex items-center gap-3 px-3 py-2 rounded-lg text-[#E3434C] hover:bg-gray-100 transition"
+                to="/"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-[#E3434C] hover:bg-[#EFE9FF] transition truncate"
               >
                 <Icon icon="carbon:logout" className="w-5 h-5 flex-shrink-0" />
                 <span>Log Out</span>
@@ -151,7 +112,7 @@ const DoctorsLayout = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+        <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6">
           <Outlet />
         </main>
       </div>

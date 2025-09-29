@@ -27,8 +27,8 @@ const DepartmentManagement = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="p-6">
-      {/* Header Section */}
+    <section className="p-4 md:p-6">
+      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
         <div>
           <h1 className="font-medium text-gray-800 text-xl md:text-2xl">
@@ -42,18 +42,18 @@ const DepartmentManagement = () => {
         <Button
           onClick={() => setOpen(true)}
           aria-label="Add new department"
-          className="bg-[#2C26DB] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#03022d]"
+          className="bg-[#2C26DB] text-white px-4 py-2 rounded-lg text-sm md:text-base font-medium hover:bg-[#03022d]"
         >
           + Add Department
         </Button>
       </div>
 
-      {/* Grid of Departments */}
+      {/* Departments Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {departments.map((dept) => (
           <div
             key={dept.id}
-            className="bg-white rounded-xl shadow p-4 flex flex-col h-full"
+            className="bg-white rounded-xl shadow-md p-4 flex flex-col h-full hover:shadow-lg transition"
           >
             <img
               src={dept.img}
@@ -61,21 +61,21 @@ const DepartmentManagement = () => {
               className="w-full h-40 object-cover rounded-lg"
             />
 
-            <h2 className="text-center text-[#0E145C] font-medium text-lg uppercase bg-[#C6C9E4] rounded-lg p-2 border border-[#0E145C] mt-3">
+            <h2 className="text-center text-[#0E145C] font-medium text-lg uppercase bg-[#C6C9E4] rounded-lg p-2 border border-[#0E145C] mt-3 truncate">
               {dept.name}
             </h2>
 
-            <div className="mt-3 text-gray-600 space-y-1">
+            <div className="mt-3 text-gray-600 space-y-1 text-center md:text-left">
               <p className="text-base text-[#2C2C2C] font-normal">
                 Total Doctors: <span className="font-semibold">{dept.total}</span>
               </p>
-              <p className="text-sm text-[#717074]">● Active doctors: {dept.active}</p>
-              <p className="text-sm text-[#717074]">● Inactive doctors: {dept.inactive}</p>
+              <p className="text-sm text-[#717074]">● Active: {dept.active}</p>
+              <p className="text-sm text-[#717074]">● Inactive: {dept.inactive}</p>
             </div>
 
             <button
               onClick={() => navigate(dept.path)}
-              className="mt-4 bg-[#BEBCF4] text-[#2C2C2C] py-2 rounded-lg hover:bg-[#5853d7] text-sm md:text-base"
+              className="mt-4 bg-[#BEBCF4] text-[#2C2C2C] py-2 rounded-lg hover:bg-[#5853d7] text-sm md:text-base transition"
             >
               View More
             </button>
@@ -83,12 +83,12 @@ const DepartmentManagement = () => {
         ))}
       </div>
 
-      {/* See All */}
+      {/* See All Button */}
       <div className="flex justify-end mt-6">
         <Button
           variant="outline"
           aria-label="See all departments"
-          className="border border-[#000000] rounded-lg px-4 py-2 text-sm hover:bg-gray-100"
+          className="border border-[#000000] rounded-lg px-4 py-2 text-sm md:text-base hover:bg-gray-100 transition"
         >
           See all
         </Button>

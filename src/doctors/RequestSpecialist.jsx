@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function RequestSpecialist({ isOpen, onClose }) {
+  const [title, setTitle] = useState("");
+  const [status, setStatus] = useState("");
+  const [notes, setNotes] = useState("");
+
   // Close modal with ESC key
   useEffect(() => {
     const handleEsc = (e) => {
@@ -12,9 +16,19 @@ export default function RequestSpecialist({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const handleSubmit = () => {
+    if (!title || !status) {
+      alert("Please fill in all required fields");
+      return;
+    }
+    console.log({ title, status, notes });
+    onClose();
+    // You can send this data to backend here
+  };
+
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center z-50"
+      className="fixed inset-0 flex items-center justify-center z-50 px-4 sm:px-6"
       aria-hidden={!isOpen}
       role="dialog"
       aria-modal="true"
@@ -26,9 +40,7 @@ export default function RequestSpecialist({ isOpen, onClose }) {
       ></div>
 
       {/* Modal Content */}
-      <div
-        className="relative bg-white rounded-lg shadow-xl w-[95%] sm:w-[80%] md:w-[500px] p-6 z-50 transform transition-all duration-300 scale-95 animate-fadeIn"
-      >
+      <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-md lg:max-w-lg p-6 z-50 overflow-y-auto max-h-[90vh] transform transition-all duration-300 scale-95">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -39,7 +51,9 @@ export default function RequestSpecialist({ isOpen, onClose }) {
         </button>
 
         {/* Modal Title */}
-        <h2 className="text-lg font-semibold mb-4">Request Specialist</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center sm:text-left">
+          Request Specialist
+        </h2>
 
         {/* Form */}
         <form className="flex flex-col space-y-4">
@@ -50,6 +64,8 @@ export default function RequestSpecialist({ isOpen, onClose }) {
             </label>
             <input
               type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="Cardiologist Consultation"
               className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
@@ -60,11 +76,15 @@ export default function RequestSpecialist({ isOpen, onClose }) {
             <label className="block text-sm font-medium text-gray-700">
               Status
             </label>
-            <select className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option>Select Status</option>
-              <option>Pending</option>
-              <option>Completed</option>
-              <option>In Progress</option>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            >
+              <option value="">Select Status</option>
+              <option value="pending">Pending</option>
+              <option value="inProgress">In Progress</option>
+              <option value="completed">Completed</option>
             </select>
           </div>
 
@@ -74,6 +94,8 @@ export default function RequestSpecialist({ isOpen, onClose }) {
               Specialist Request Details
             </label>
             <textarea
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
               rows="5"
               placeholder="Write specialist request details here..."
               className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
@@ -83,8 +105,8 @@ export default function RequestSpecialist({ isOpen, onClose }) {
           {/* Submit Button */}
           <button
             type="button"
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            onClick={onClose}
+            onClick={handleSubmit}
+            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base font-medium"
           >
             Send to Specialist
           </button>
@@ -93,3 +115,4 @@ export default function RequestSpecialist({ isOpen, onClose }) {
     </div>
   );
 }
+

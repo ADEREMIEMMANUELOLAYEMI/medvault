@@ -1,10 +1,10 @@
 // src/pages/HealthSpecialistLogin.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Specialist from "../../src/assets/images/specialist.png";
 
 const HealthSpecialistLogin = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [Specialist]; // can add more later
+  const slides = [Specialist]; // You can add more images here
 
   const [formData, setFormData] = useState({
     type: "Doctor",
@@ -19,26 +19,26 @@ const HealthSpecialistLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login data:", formData);
-    // TODO: add login API or navigation
+    // TODO: Add login API call or navigation
   };
 
   return (
     <div className="flex flex-col md:flex-row h-screen w-full bg-white">
       {/* Left Section (Slider) */}
-      <div className="hidden md:flex w-1/2 relative items-center justify-center">
+      <div className="hidden md:flex w-1/2 relative items-center justify-center bg-gray-100">
         <img
           src={slides[currentSlide]}
           alt="Health Specialist"
           className="h-full w-full object-cover transition-all duration-500"
         />
-        {/* Dots */}
+        {/* Slide Dots */}
         <div className="absolute bottom-4 flex space-x-2">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`w-3 h-3 rounded-full ${
+              className={`w-3 h-3 rounded-full transition-colors ${
                 currentSlide === idx ? "bg-indigo-600" : "bg-gray-300"
               }`}
             />
@@ -52,7 +52,7 @@ const HealthSpecialistLogin = () => {
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
             Health Specialist Sign In
           </h2>
-          <p className="text-gray-500 mb-8">
+          <p className="text-gray-500 mb-8 text-sm md:text-base">
             Use your information to sign into your account.
           </p>
 
@@ -114,14 +114,15 @@ const HealthSpecialistLogin = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
+                required
                 className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none"
               />
             </div>
 
-            {/* Button */}
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium text-sm md:text-base"
             >
               Log In
             </button>

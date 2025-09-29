@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Prescriptions({ isOpen, onClose }) {
+  const [medication, setMedication] = useState("");
+  const [dosage, setDosage] = useState("");
+  const [instructions, setInstructions] = useState("");
+
   // Close modal with ESC key
   useEffect(() => {
     const handleEsc = (e) => {
@@ -12,21 +16,31 @@ export default function Prescriptions({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const handleSubmit = () => {
+    if (!medication || !dosage) {
+      alert("Please fill in all required fields");
+      return;
+    }
+    console.log({ medication, dosage, instructions });
+    onClose();
+    // Here you can send the data to backend or API
+  };
+
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center z-50"
+      className="fixed inset-0 flex items-center justify-center z-50 px-4 sm:px-6"
       aria-hidden={!isOpen}
       role="dialog"
       aria-modal="true"
     >
-      {/* Background Blur */}
+      {/* Background Overlay */}
       <div
         className="absolute inset-0 bg-black/30 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
-      {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-xl w-[95%] sm:w-[80%] md:w-[500px] p-6 z-50">
+      {/* Modal Container */}
+      <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-md lg:max-w-lg p-6 z-50 overflow-y-auto max-h-[90vh]">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -37,41 +51,51 @@ export default function Prescriptions({ isOpen, onClose }) {
         </button>
 
         {/* Modal Title */}
-        <h2 className="text-lg font-semibold mb-4">Prescriptions</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center sm:text-left">
+          Prescriptions
+        </h2>
 
         {/* Form */}
         <form className="flex flex-col space-y-4">
           {/* Medication Input */}
-          <div>
+          <div className="flex flex-col">
             <label className="block text-sm font-medium text-gray-700">
               Medication
             </label>
             <input
               type="text"
+              value={medication}
+              onChange={(e) => setMedication(e.target.value)}
               placeholder="e.g., Metformin 500mg"
               className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
           {/* Dosage Dropdown */}
-          <div>
+          <div className="flex flex-col">
             <label className="block text-sm font-medium text-gray-700">
               Dosage
             </label>
-            <select className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option>Select Dosage</option>
-              <option>Once Daily</option>
-              <option>Twice Daily</option>
-              <option>Three Times Daily</option>
+            <select
+              value={dosage}
+              onChange={(e) => setDosage(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            >
+              <option value="">Select Dosage</option>
+              <option value="once">Once Daily</option>
+              <option value="twice">Twice Daily</option>
+              <option value="three">Three Times Daily</option>
             </select>
           </div>
 
           {/* Instructions Textarea */}
-          <div>
+          <div className="flex flex-col">
             <label className="block text-sm font-medium text-gray-700">
               Instructions
             </label>
             <textarea
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
               rows="5"
               placeholder="Enter instructions for the patient..."
               className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
@@ -81,8 +105,8 @@ export default function Prescriptions({ isOpen, onClose }) {
           {/* Submit Button */}
           <button
             type="button"
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            onClick={onClose}
+            onClick={handleSubmit}
+            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base font-medium"
           >
             Send to Pharmacy
           </button>

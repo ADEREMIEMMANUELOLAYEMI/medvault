@@ -1,10 +1,11 @@
+// src/pages/Hospital.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import Attendance from "../../src/assets/images/attendance.png";
 
 const Hospital = () => {
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-full">
+    <div className="flex flex-col lg:flex-row h-screen w-full bg-white">
       {/* Left Image Section */}
       <div className="w-full lg:w-1/2 relative">
         <img
@@ -15,10 +16,10 @@ const Hospital = () => {
       </div>
 
       {/* Right Signup Section */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-6 sm:px-10 md:px-16 py-10 lg:py-0">
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-6 sm:px-10 md:px-16 py-10 lg:py-0">
         <div className="max-w-md w-full">
           {/* Title */}
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 text-center lg:text-left">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 text-center lg:text-left">
             Hospital Sign Up
           </h2>
           <p className="text-sm text-gray-500 mb-8 text-center lg:text-left">
@@ -105,7 +106,7 @@ const Hospital = () => {
           </form>
 
           {/* Footer Text */}
-          <p className="text-sm text-gray-600 mt-6 text-center">
+          <p className="text-sm text-gray-600 mt-6 text-center lg:text-left">
             Already have an Account?{" "}
             <Link
               to="/login"

@@ -1,3 +1,4 @@
+// src/layouts/DoctorsMainLayout.jsx
 import { Icon } from "@iconify/react";
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
@@ -54,7 +55,11 @@ const DoctorsMainLayout = () => {
                 Hospital
               </span>
             </div>
-            <img src={Cross} alt="Hospital Logo" className="w-8 h-8 md:w-auto md:h-auto" />
+            <img
+              src={Cross}
+              alt="Hospital Logo"
+              className="w-8 h-8 md:w-auto md:h-auto"
+            />
           </div>
         </section>
       </header>

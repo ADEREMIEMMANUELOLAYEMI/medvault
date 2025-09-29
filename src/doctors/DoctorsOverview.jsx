@@ -1,3 +1,4 @@
+// src/pages/DoctorsOverview.jsx
 import { useState } from "react";
 
 export default function DoctorsOverview() {
@@ -70,7 +71,7 @@ export default function DoctorsOverview() {
             </thead>
             <tbody>
               {labResults.map((row, i) => (
-                <tr key={i} className="border-t hover:bg-gray-50">
+                <tr key={i} className="border-t hover:bg-gray-50 transition-colors">
                   <td className="p-3">{row.name}</td>
                   <td className="p-3">{row.test}</td>
                   <td className="p-3">{row.category}</td>
