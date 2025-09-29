@@ -1,30 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Attendance from '../../src/assets/images/attendance.png'
-
-
- 
-
+import Attendance from "../../src/assets/images/attendance.png";
 
 const Hospital = () => {
   return (
-   <div className="flex h-screen w-full">
-      {/* Left Image Section */}
-      <div className="w-1/2 hidden lg:block relative">
+    <div className="flex flex-col lg:flex-row h-screen w-full">
+      {/* Left Image Section (hidden on mobile/tablet) */}
+      <div className="hidden lg:block w-1/2 relative">
         <img
-          src={Attendance} // Replace with your image
+          src={Attendance}
           alt="Healthcare staff"
           className="h-full w-full object-cover"
         />
       </div>
 
       {/* Right Signup Section */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-6 md:px-16 relative">
+      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-6 sm:px-10 md:px-16 py-10 lg:py-0">
         <div className="max-w-md w-full">
           {/* Title */}
-          <h2 className="text-2xl font-semibold text-gray-900">Hospital Sign Up</h2>
-          <p className="text-sm text-gray-500 mb-8">
-            Use your information to sign into your account.
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 text-center lg:text-left">
+            Hospital Sign Up
+          </h2>
+          <p className="text-sm text-gray-500 mb-8 text-center lg:text-left">
+            Use your information to create your account.
           </p>
 
           {/* Form */}
@@ -65,15 +63,15 @@ const Hospital = () => {
               />
             </div>
 
-            {/* Hospital License Number */}
+            {/* Hospital License Upload */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Hospital License image
+                Hospital License Image
               </label>
               <input
-                type="text"
-                defaultValue="12345678ADE"
-                className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none"
+                type="file"
+                accept="image/*"
+                className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100"
               />
             </div>
 
@@ -87,18 +85,21 @@ const Hospital = () => {
               </button>
             </Link>
           </form>
- 
+
           {/* Footer Text */}
           <p className="text-sm text-gray-600 mt-6 text-center">
             Already have an Account?{" "}
-            <a href="/login" className="text-blue-600 font-medium hover:underline">
+            <a
+              href="/login"
+              className="text-blue-600 font-medium hover:underline"
+            >
               Log In
             </a>
           </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hospital
+export default Hospital;

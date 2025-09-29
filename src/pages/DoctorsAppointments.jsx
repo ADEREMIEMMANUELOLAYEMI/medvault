@@ -21,63 +21,7 @@ const staffData = [
     phone: "08087654321",
     avatar: "https://i.pravatar.cc/40?img=2",
   },
-
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
+  // add more staff data...
 ];
 
 const stats = [
@@ -102,7 +46,6 @@ const stats = [
     icon: "mdi:close-circle",
     bg: "bg-orange-100 text-orange-600",
   },
-  
 ];
 
 // Simple badge for status
@@ -128,22 +71,24 @@ export default function App() {
       </p>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="bg-[#FFFFFF] p-4 rounded-[8px] shadow-[0_2px_2px_0_rgba(0,0,0,0.1)]"
+            className="bg-[#FFFFFF] p-4 rounded-[8px] shadow-[0_2px_2px_0_rgba(0,0,0,0.1)] relative"
           >
             <p className="text-sm text-[#464255] font-medium">{stat.title}</p>
-            <h2 className="font-semibold text-[#464255] text-[36px]">
+            <h2 className="font-semibold text-[#464255] text-[28px] md:text-[36px]">
               {stat.value}
             </h2>
             <div
-              className={`w-20 h-20 flex items-center justify-center rounded-full mb-2 relative left-[70%] top-[-60px] ${stat.bg}`}
+              className={`w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full absolute right-4 top-4 ${stat.bg}`}
             >
-              <Icon icon={stat.icon} width="20" height="20" />
+              <Icon icon={stat.icon} width="24" height="24" />
             </div>
-            <p className="text-xs text-[#717074]">{stat.subtitle}</p>
+            <p className="text-xs text-[#717074] mt-12 md:mt-16">
+              {stat.subtitle}
+            </p>
           </div>
         ))}
       </div>
@@ -159,7 +104,7 @@ export default function App() {
           />
         </div>
 
-        <div className="flex gap-3 mt-2 md:mt-0">
+        <div className="flex flex-wrap gap-3">
           <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-[8px] font-normal text-[#838383] hover:bg-gray-100 text-[14px]">
             <FiFilter className="mr-2 text-[#2C2C2C]" /> Filter
           </button>
@@ -177,7 +122,7 @@ export default function App() {
 
       {/* Table */}
       <div className="overflow-x-auto bg-[#FFFFFF] rounded-lg shadow border border-[#A49F9F]">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm min-w-[600px]">
           <thead className="bg-gray-50 text-left">
             <tr>
               <th className="p-3">#</th>
@@ -205,7 +150,7 @@ export default function App() {
             {staffData.map((staff, i) => (
               <tr
                 key={i}
-                className="border border-[#A49F9F] hover:bg-gray-50 transition-colors"
+                className="border-b border-[#E5E7EB] hover:bg-gray-50 transition-colors"
               >
                 <td className="p-3">
                   <input type="checkbox" />

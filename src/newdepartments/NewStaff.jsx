@@ -1,5 +1,5 @@
 // src/components/NewStaff.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function NewStaff({ isOpen, onClose, onCreate }) {
   const [name, setName] = useState("");
@@ -8,27 +8,45 @@ export default function NewStaff({ isOpen, onClose, onCreate }) {
   const [department, setDepartment] = useState("");
   const [license, setLicense] = useState("");
 
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (isOpen) document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const submit = (e) => {
     e.preventDefault();
     onCreate?.({ name, email, role, department, license });
+    // Reset form after creating
+    setName("");
+    setEmail("");
+    setRole("");
+    setDepartment("");
+    setLicense("");
     onClose();
   };
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
     >
       <div
-        className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative"
+        className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative transform transition-all duration-300 scale-95 animate-fadeIn"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl"
+          aria-label="Close modal"
         >
           ✕
         </button>
@@ -126,7 +144,7 @@ export default function NewStaff({ isOpen, onClose, onCreate }) {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white rounded-lg py-2 font-medium hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white rounded-lg py-2 font-medium hover:bg-blue-700 transition"
           >
             Create
           </button>

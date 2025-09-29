@@ -1,6 +1,7 @@
 import { useState } from "react";
-import  Hospitals from '../../src/assets/images/hospitals.png'
+import Hospitals from "../../src/assets/images/hospitals.png";
 import { Link } from "react-router-dom";
+
 export default function HospitalSignUp() {
   const [file, setFile] = useState(null);
 
@@ -9,9 +10,9 @@ export default function HospitalSignUp() {
   };
 
   return (
-    <div className="flex h-screen w-screen">
+    <div className="flex flex-col md:flex-row h-screen w-full">
       {/* Left side - Image */}
-      <div className="w-1/2 hidden md:flex">
+      <div className="hidden md:flex md:w-1/2">
         <img
           src={Hospitals}
           alt="Doctor with patient"
@@ -20,11 +21,14 @@ export default function HospitalSignUp() {
       </div>
 
       {/* Right side - Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-white">
-        <div className="w-full max-w-md p-6">
-          <h2 className="text-2xl font-semibold mb-2">Hospital Sign Up</h2>
-          <p className="text-gray-600 mb-6">
-            Use your information to sign into your account.
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-white px-4 sm:px-6 md:px-10 py-8 md:py-0">
+        <div className="w-full max-w-md">
+          {/* Title */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
+            Hospital Sign Up
+          </h2>
+          <p className="text-gray-600 mb-6 text-center md:text-left">
+            Upload your hospital license to continue.
           </p>
 
           {/* Upload hospital license */}
@@ -32,7 +36,7 @@ export default function HospitalSignUp() {
             <span className="block text-gray-700 font-medium mb-2">
               Upload hospital license image:
             </span>
-            <div className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500">
+            <div className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 transition">
               <input
                 type="file"
                 accept="image/*"
@@ -40,7 +44,10 @@ export default function HospitalSignUp() {
                 onChange={handleFileChange}
                 id="fileUpload"
               />
-              <label htmlFor="fileUpload" className="flex flex-col items-center justify-center cursor-pointer">
+              <label
+                htmlFor="fileUpload"
+                className="flex flex-col items-center justify-center cursor-pointer"
+              >
                 <svg
                   className="w-10 h-10 mb-2 text-gray-400"
                   fill="none"
@@ -55,38 +62,33 @@ export default function HospitalSignUp() {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6H16a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-gray-500">
-                  Click to upload or drag and drop
-                </p>
-                <p className="text-xs text-gray-400">
-                  JPG, JPEG, PNG (max 10MB)
-                </p>
+                <p className="text-gray-500">Click to upload or drag & drop</p>
+                <p className="text-xs text-gray-400">JPG, JPEG, PNG (max 10MB)</p>
               </label>
             </div>
             {file && (
-              <p className="mt-2 text-sm text-green-600">
-                {file.name} selected
+              <p className="mt-2 text-sm text-green-600 truncate">
+                ✅ {file.name} selected
               </p>
             )}
           </label>
 
           {/* Buttons */}
-          <div className="flex justify-between mt-6">
-            <button className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">
+          <div className="flex flex-col sm:flex-row justify-between gap-3 mt-6">
+            <button className="w-full sm:w-auto px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition">
               Previous
             </button>
-            <Link
-            to='/ReviewingInfo'>
-            <button className="px-6 py-2 rounded-lg bg-blue-700 text-white hover:bg-blue-800">
-              Upload
-            </button>
+            <Link to="/ReviewingInfo" className="w-full sm:w-auto">
+              <button className="w-full px-6 py-2 rounded-lg bg-blue-700 text-white hover:bg-blue-800 transition">
+                Upload
+              </button>
             </Link>
           </div>
 
           {/* Footer */}
           <p className="mt-6 text-center text-gray-600">
             Already have an Account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="/login" className="text-blue-600 font-medium hover:underline">
               Log In
             </a>
           </p>
@@ -95,4 +97,3 @@ export default function HospitalSignUp() {
     </div>
   );
 }
-

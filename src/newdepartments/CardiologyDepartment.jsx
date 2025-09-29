@@ -21,88 +21,28 @@ const staffData = [
     phone: "08087654321",
     avatar: "https://i.pravatar.cc/40?img=2",
   },
-
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-   {
-    id: "12456-SEC",
-    name: "Jane Doe",
-    dept: "Pediatrics",
-    status: "Unattended",
-    phone: "08087654321",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
+  // ...more staff
 ];
 
 const stats = [
   {
     title: "Total Doctors",
     value: "704",
-   
     icon: "mdi:calendar",
     bg: "bg-purple-100 text-purple-600",
   },
   {
     title: "Active Doctors",
     value: "653",
-   
     icon: "mdi:check-circle",
     bg: "bg-green-100 text-green-600",
   },
   {
     title: "Inactive Doctors",
     value: "49",
-   
     icon: "mdi:close-circle",
     bg: "bg-orange-100 text-orange-600",
   },
-  
 ];
 
 // Simple badge for status
@@ -122,26 +62,24 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f7f6fb] p-4 md:p-6">
       {/* Header */}
-      <h1 className="text-xl font-normal  text-[#000] mb-10">Cardiology</h1>
-     
+      <h1 className="text-xl font-normal text-[#000] mb-8">Cardiology</h1>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 py-2 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="bg-[#FFFFFF]  rounded-[8px] shadow-[0_2px_2px_0_rgba(0,0,0,0.1)] p-2 "
+            className="bg-white rounded-lg shadow p-4 flex flex-col relative"
           >
-            <p className="text-sm text-[#464255] font-medium relative top-[5%]">{stat.title}</p>
-            <h2 className="font-semibold text-[#464255] text-[36px] relative top-[5%] ">
+            <p className="text-sm text-[#464255] font-medium">{stat.title}</p>
+            <h2 className="font-semibold text-[#464255] text-3xl mt-2">
               {stat.value}
             </h2>
             <div
-              className={`w-20 h-20 flex items-center justify-center rounded-full mb-2 relative left-[70%] top-[-70px] ${stat.bg}`}
+              className={`absolute right-4 top-4 w-12 h-12 flex items-center justify-center rounded-full ${stat.bg}`}
             >
               <Icon icon={stat.icon} width="20" height="20" />
             </div>
-            <p className="text-xs text-[#717074]">{stat.subtitle}</p>
           </div>
         ))}
       </div>
@@ -157,11 +95,11 @@ export default function App() {
           />
         </div>
 
-        <div className="flex gap-3 mt-2 md:mt-0">
-          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-[8px] font-normal text-[#838383] hover:bg-gray-100 text-[14px]">
+        <div className="flex gap-3">
+          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-lg text-sm text-[#838383] hover:bg-gray-100">
             <FiFilter className="mr-2 text-[#2C2C2C]" /> Filter
           </button>
-          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-[8px] font-normal text-[#838383] hover:bg-gray-100 text-[14px]">
+          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-lg text-sm text-[#838383] hover:bg-gray-100">
             <Icon
               icon="fluent:arrow-sort-24-regular"
               width="20"
@@ -174,44 +112,30 @@ export default function App() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto bg-[#FFFFFF] rounded-lg shadow border border-[#A49F9F]">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto bg-white rounded-lg shadow border border-[#A49F9F]">
+        <table className="w-full min-w-[800px] text-sm">
           <thead className="bg-gray-50 text-left">
             <tr>
               <th className="p-3">#</th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Doctor ID
-              </th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Name
-              </th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Department
-              </th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Status
-              </th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Phone no
-              </th>
-              <th className="p-3 text-[#717074] font-normal text-[14px]">
-                Action
-              </th>
+              <th className="p-3 text-gray-500 text-sm">Doctor ID</th>
+              <th className="p-3 text-gray-500 text-sm">Name</th>
+              <th className="p-3 text-gray-500 text-sm">Department</th>
+              <th className="p-3 text-gray-500 text-sm">Status</th>
+              <th className="p-3 text-gray-500 text-sm">Phone no</th>
+              <th className="p-3 text-gray-500 text-sm">Action</th>
             </tr>
           </thead>
           <tbody>
             {staffData.map((staff, i) => (
               <tr
                 key={i}
-                className="border border-[#A49F9F] hover:bg-gray-50 transition-colors"
+                className="border-b border-gray-200 hover:bg-gray-50 transition"
               >
                 <td className="p-3">
                   <input type="checkbox" />
                 </td>
-                <td className="p-3 text-[#717074] text-[14px] font-normal">
-                  {staff.id}
-                </td>
-                <td className="p-3 flex items-center gap-2 text-[#838383] text-[14px] font-normal leading-normal">
+                <td className="p-3 text-gray-600 text-sm">{staff.id}</td>
+                <td className="p-3 flex items-center gap-2 text-gray-700 text-sm">
                   <img
                     src={staff.avatar}
                     alt={staff.name}
@@ -219,17 +143,13 @@ export default function App() {
                   />
                   {staff.name}
                 </td>
-                <td className="p-3 text-[#717074] text-[14px] font-normal">
-                  {staff.dept}
-                </td>
+                <td className="p-3 text-gray-600 text-sm">{staff.dept}</td>
                 <td className="p-3">
                   <StatusBadge status={staff.status} />
                 </td>
-                <td className="p-3 text-[#717074] text-[14px] font-normal">
-                  {staff.phone}
-                </td>
+                <td className="p-3 text-gray-600 text-sm">{staff.phone}</td>
                 <td className="p-3">
-                  <button>
+                  <button className="p-1 hover:bg-gray-100 rounded">
                     <FiMoreVertical />
                   </button>
                 </td>
@@ -240,26 +160,24 @@ export default function App() {
       </div>
 
       {/* Pagination */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-4 text-[14px] text-[#2C2C2C] font-normal">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 text-sm text-[#2C2C2C]">
         <p>1-12 of 2,060 items</p>
 
         <div className="flex items-center gap-3">
-          <button className="flex justify-center items-center border border-[#838383] rounded-full bg-[#FFF] hover:bg-gray-100 w-[28px] h-[28px]">
+          <button className="flex justify-center items-center border border-gray-400 rounded-full bg-white hover:bg-gray-100 w-8 h-8">
             <BsChevronLeft />
           </button>
-          <span className="text-[#2C2C2C] font-normal text-[14px]">
+          <span>
             Page <b>1</b> of 50
           </span>
-          <button className="flex justify-center items-center border border-[#838383] rounded-full bg-[#FFF] hover:bg-gray-100 w-[28px] h-[28px]">
+          <button className="flex justify-center items-center border border-gray-400 rounded-full bg-white hover:bg-gray-100 w-8 h-8">
             <BsChevronRight />
           </button>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-[#2C2C2C] font-normal text-[14px] leading-normal">
-            Show
-          </span>
-          <select className="border border-[#838383] rounded-[8px] bg-[#fff] py-2 px-3">
+          <span>Show</span>
+          <select className="border border-gray-400 rounded-lg bg-white py-1 px-2 text-sm">
             <option>12</option>
             <option>24</option>
             <option>50</option>

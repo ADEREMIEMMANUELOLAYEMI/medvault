@@ -254,23 +254,29 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="font-sans">
+    <div className="font-sans overflow-x-hidden">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white/20 backdrop-blur-md shadow">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img src={Medvault} alt="Med Vault" className="h-8 w-8" />
-            <span className="font-bold text-blue-700 text-lg">Med Vault</span>
+            <img
+              src={Medvault}
+              alt="Med Vault"
+              className="h-8 w-8 object-contain"
+            />
+            <span className="font-bold text-blue-700 text-lg whitespace-nowrap">
+              Med Vault
+            </span>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6 lg:space-x-8">
             {["Home", "About", "Services", "Contact"].map((item, idx) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className={`relative text-gray-800 hover:text-blue-700 transition font-medium 
+                className={`relative text-gray-800 hover:text-blue-700 transition font-medium
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-700 after:transition-all after:duration-300 hover:after:w-full
                   ${idx === 0 ? "text-blue-700 after:w-full" : ""}`}
               >
@@ -283,7 +289,7 @@ const App = () => {
           <div className="hidden md:block">
             <Link
               to="/sign"
-              className="px-6 py-2 bg-[#1447e6] text-white rounded-lg shadow hover:bg-blue-800 transition"
+              className="px-4 sm:px-6 py-2 bg-[#1447e6] text-white rounded-lg shadow hover:bg-blue-800 transition text-sm sm:text-base whitespace-nowrap"
             >
               Register
             </Link>
@@ -300,7 +306,7 @@ const App = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden bg-white/90 backdrop-blur-md shadow-lg">
+          <div className="md:hidden bg-white/95 backdrop-blur-md shadow-lg">
             <div className="flex flex-col items-center py-4 space-y-4">
               {["Home", "About", "Services", "Contact"].map((item) => (
                 <a
@@ -326,7 +332,7 @@ const App = () => {
 
       {/* Hero Section */}
       <section
-        className="relative h-screen flex items-center justify-center text-center text-white"
+        className="relative min-h-screen flex items-center justify-center text-center text-white px-4 sm:px-6 lg:px-8"
         style={{
           backgroundImage: `url(${Pharmacist})`,
           backgroundSize: "cover",
@@ -337,22 +343,20 @@ const App = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         {/* Content */}
-        <div className="relative z-10 px-4">
-          <h1 className="text-3xl md:text-[48px] leading-tight mb-6 font-normal">
-            <span className="whitespace-nowrap block">
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight mb-6 font-semibold break-words">
+            <span className="block">
               Transforming Healthcare Through Innovation
             </span>
             <span className="block">And Compassion</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-[32px] font-normal">
-            <span className="block">
-              Our centralized hospital management system connects hospitals and
-            </span>
-            <span>caregivers in one seamless platform</span>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+            Our centralized hospital management system connects hospitals and
+            caregivers in one seamless platform
           </p>
           <Link
             to="/sign"
-            className="px-8 py-3 bg-blue-700 text-white rounded-lg shadow-lg hover:bg-blue-800 transition"
+            className="px-6 sm:px-8 py-3 bg-blue-700 text-white rounded-lg shadow-lg hover:bg-blue-800 transition text-sm sm:text-base"
           >
             Register
           </Link>

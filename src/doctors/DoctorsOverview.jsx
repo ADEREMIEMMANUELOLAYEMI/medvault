@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 export default function DoctorsOverview() {
-  // Mock data (replace with API calls later)
   const stats = [
     { label: "Appointments Today", value: "26.5 min", icon: "⏱️" },
     { label: "Patients Seen Today", value: "5", icon: "👥" },
     { label: "Avg. Consultation Time", value: "26.5 min", icon: "📊" },
   ];
 
-  const patients = [  
+  const patients = [
     { title: "Routine Checkup", name: "Daniel Chung", time: "9:00 AM" },
     { title: "Heart Follow-Up", name: "Rashad Mangi", time: "10:30 AM" },
     { title: "Consultation", name: "Olu David", time: "12:00 PM" },
@@ -22,9 +21,9 @@ export default function DoctorsOverview() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 space-y-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8 space-y-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <div
             key={i}
@@ -42,7 +41,7 @@ export default function DoctorsOverview() {
       {/* Today's Patients */}
       <div>
         <h2 className="text-lg font-semibold mb-2">Today's Patients</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {patients.map((p, i) => (
             <div
               key={i}
@@ -60,7 +59,7 @@ export default function DoctorsOverview() {
       <div>
         <h2 className="text-lg font-semibold mb-2">Lab Results</h2>
         <div className="overflow-x-auto bg-white rounded-xl shadow">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[600px] text-sm">
             <thead className="bg-gray-100 text-left">
               <tr>
                 <th className="p-3">Patient Name</th>

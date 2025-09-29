@@ -1,19 +1,20 @@
 import React from "react";
-import Review from '../../src/assets/images/review.png'
+import Review from "../../src/assets/images/review.png";
+
 export default function ReviewingInfo() {
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex flex-col lg:flex-row h-screen w-full">
       {/* Left Section - Image */}
-      <div className="w-1/2 hidden lg:block">
+      <div className="hidden lg:block lg:w-1/2">
         <img
-          src={Review}// Replace with your local image if needed
+          src={Review}
           alt="Healthcare staff"
           className="h-full w-full object-cover"
         />
       </div>
 
       {/* Right Section - Content */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-6 md:px-16">
+      <div className="flex w-full lg:w-1/2 items-center justify-center bg-white px-6 sm:px-10 md:px-16">
         <div className="max-w-md w-full text-center">
           {/* Save Icon with Checkmark */}
           <div className="flex justify-center mb-6">
@@ -36,26 +37,22 @@ export default function ReviewingInfo() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2">
             Reviewing Information Supplied
           </h2>
 
           {/* Description */}
-          <p className="text-sm text-gray-500 mb-8">
+          <p className="text-sm sm:text-base text-gray-500 mb-8">
             Please be patient while we review your information. <br />
             Check back in the next 6 hours.
           </p>
 
           {/* Loading Spinner */}
           <div className="flex justify-center">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-6 h-6 sm:w-8 sm:h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-

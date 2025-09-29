@@ -12,7 +12,7 @@ export default function AddNotes({ isOpen, onClose }) {
       ></div>
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-xl w-[90%] max-w-md p-6 z-50">
+      <div className="relative bg-white rounded-lg shadow-xl w-[90%] max-w-lg sm:max-w-md p-6 z-50 overflow-y-auto max-h-[90vh]">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -22,7 +22,7 @@ export default function AddNotes({ isOpen, onClose }) {
         </button>
 
         {/* Modal Title */}
-        <h2 className="text-lg font-semibold mb-4">Add Notes</h2>
+        <h2 className="text-lg sm:text-xl font-semibold mb-4">Add Notes</h2>
 
         {/* Form */}
         <form className="flex flex-col space-y-4">
@@ -34,7 +34,7 @@ export default function AddNotes({ isOpen, onClose }) {
             <input
               type="text"
               placeholder="Test For Diabetes"
-              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base"
             />
           </div>
 
@@ -43,7 +43,7 @@ export default function AddNotes({ isOpen, onClose }) {
             <label className="block text-sm font-medium text-gray-700">
               Status
             </label>
-            <select className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <select className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base">
               <option>Status</option>
               <option>Pending</option>
               <option>Completed</option>
@@ -72,14 +72,14 @@ Interpretation: Elevated
 
 HbA1c: 7.2 %
 Reference Range: ≤ 5.7 % (Normal), 5.7–6.4 % (Prediabetes), ≥ 6.5 % (Diabetes)`}
-              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="button"
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm sm:text-base"
             onClick={onClose}
           >
             Add Note

@@ -1,48 +1,48 @@
-
-
 // src/pages/HealthSpecialistLogin.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link
-import Specilaist from "../../src/assets/images/specialist.png"; // your image
+import { Link } from "react-router-dom";
+import Specialist from "../../src/assets/images/specialist.png"; // ✅ Corrected spelling
 
 const HealthSpecialist = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Only one slide for now
-  const slides = [Specilaist];
+  // Right now only 1 slide (but scalable later)
+  const slides = [Specialist];
 
   return (
-    <div className="flex h-screen w-full bg-white">
-      {/* Left Section (Slider) → moved here */}
-      <div className="hidden md:flex w-1/2 relative items-center justify-center">
+    <div className="flex flex-col md:flex-row h-screen w-full bg-white">
+      {/* Left Section (Slider) → hidden on mobile */}
+      <div className="hidden md:flex md:w-1/2 relative items-center justify-center">
         <img
           src={slides[currentSlide]}
           alt="Specialist"
           className="h-full w-full object-cover transition-all duration-500"
         />
 
-        {/* Dots */}
-        <div className="absolute bottom-4 flex space-x-2">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`w-3 h-3 rounded-full ${
-                currentSlide === idx ? "bg-indigo-600" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+        {/* Dots (show only if multiple slides) */}
+        {slides.length > 1 && (
+          <div className="absolute bottom-4 flex space-x-2">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`w-3 h-3 rounded-full ${
+                  currentSlide === idx ? "bg-indigo-600" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Right Section (Form) → moved here */}
-      <div className="w-full md:w-1/2 flex items-center justify-center px-6 md:px-16 lg:px-24">
+      {/* Right Section (Form) */}
+      <div className="flex w-full md:w-1/2 items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-10 md:py-0">
         <div className="max-w-md w-full">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 text-center md:text-left">
             Health Specialist Log In
           </h2>
-          <p className="text-gray-500 mb-8">
+          <p className="text-gray-500 mb-8 text-center md:text-left">
             Use your information to sign into your account.
           </p>
 
@@ -109,7 +109,7 @@ const HealthSpecialist = () => {
             </div>
 
             {/* Button */}
-            <Link to="/HealthSpecialistSignin"> {/* ✅ Fixed spelling */}
+            <Link to="/HealthSpecialistSignin">
               <button
                 type="button"
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg shadow-md transition font-medium"

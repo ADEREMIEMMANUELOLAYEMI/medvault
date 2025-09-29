@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FiSearch, FiFilter, FiMoreVertical } from "react-icons/fi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Icon } from "@iconify/react";
-import NewStaff from "../../src/newdepartments/NewStaff"; // ✅ Correct import (relative, no /src)
+import NewStaff from "../../src/newdepartments/NewStaff"; // ✅ Correct import
 
 const staffData = [
   {
@@ -22,139 +22,48 @@ const staffData = [
     phone: "+234 8107929290",
     avatar: "https://i.pravatar.cc/150?img=5",
   },
-  {
-    id: "12345-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=3",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    id: "12347-SEC",
-    name: "Femi Yakubu Sam",
-    dept: "Cardiology",
-    status: "Active",
-    phone: "+234 8107929290",
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
+  // ...repeat items
 ];
-
-const Tab = ({ label, active }) => (
-  <div className="flex flex-col">
-    <button
-      className={`p-[8px] rounded-[8px] text-[16px] font-normal shadow-lg ${
-        active
-          ? "bg-[#D5C8F8] text-[#0F21E4] gap-[36px]"
-          : "flex flex-row bg-[#FFF] text-[#838383] hover:bg-gray-200 shadow-lg rounded-[8px] text-[16px] .readex"
-      }`}
-    >
-      {label}
-    </button>
-  </div>
-);
 
 const StatusBadge = ({ status }) => {
   const base =
-    "p-[4px] rounded-[8px] text-xs font-medium flex items-center justify-center";
+    "px-3 py-1 rounded-lg text-xs font-medium flex items-center justify-center";
   if (status === "Active")
     return (
-      <span
-        className={`${base} bg-[#E1F4EE] text-[#56B597] .readex text-[14px] font-normal`}
-      >
-        Active
-      </span>
+      <span className={`${base} bg-[#E1F4EE] text-[#56B597]`}>Active</span>
     );
   return <span className={`${base} bg-gray-200 text-gray-600`}>Inactive</span>;
 };
 
 export default function DoctorsStaff() {
-  const [isModalOpen, setIsModalOpen] = useState(false); // ✅ modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-[#000] .readex font-medium text-[20px]">
-            patient Management
+          <h1 className="text-gray-900 font-medium text-lg md:text-xl">
+            Patient Management
           </h1>
-          <p className="text-[16px] text-[#717074] font-normal leading-normal w-[321px] h-[20px]">
+          <p className="text-sm md:text-base text-[#717074] max-w-md">
             Manage all staff members in your hospital
           </p>
         </div>
         <button
-          onClick={() => setIsModalOpen(true)} // ✅ open modal
-          className="bg-[#0F21E4] text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          onClick={() => setIsModalOpen(true)}
+          className="bg-[#0F21E4] text-white px-4 py-2 rounded-lg text-sm md:text-base hover:bg-blue-700"
         >
-          + Add patient
+          + Add Patient
         </button>
       </div>
 
-      {/* ✅ AddStaff Modal */}
+      {/* AddStaff Modal */}
       <NewStaff isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Tabs */}
-      
 
       {/* Search + Filter */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+        {/* Search Box */}
         <div className="flex items-center bg-white border rounded-lg px-3 py-2 w-full md:w-80">
           <FiSearch className="text-gray-400 mr-2" />
           <input
@@ -164,61 +73,48 @@ export default function DoctorsStaff() {
           />
         </div>
 
-        <div className="flex gap-18 mt-[20px]">
-          <button className="flex items-center border border-[#A49F9F] p-[8px] rounded-[8px] font-normal text-[#838383] hover:bg-gray-100 text-[14px] .readex">
+        {/* Filter + Sort */}
+        <div className="flex gap-2">
+          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100">
             <FiFilter className="mr-2 text-[#2C2C2C]" /> Filter
           </button>
-          <button className="flex items-center border border-[#A49F9F] p-[8px] rounded-[8px] font-normal text-[#838383] hover:bg-gray-100 text-[14px] .readex">
+          <button className="flex items-center border border-[#A49F9F] px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100">
             <Icon
               icon="fluent:arrow-sort-24-regular"
-              width="20"
-              height="20"
-              className="text-[#000000]"
+              width="18"
+              height="18"
+              className="mr-1 text-black"
             />
-            <span> Sort By</span>
+            Sort By
           </button>
         </div>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto bg-[#FFFFFF] rounded-lg shadow border border-[#A49F9F]">
+      <div className="overflow-x-auto bg-white rounded-lg shadow border">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 text-left">
             <tr>
-              <th className="p-3 text-[#717074] .readex font-normal">#</th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Doctor ID
-              </th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Name
-              </th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Department
-              </th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Status
-              </th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Phone no
-              </th>
-              <th className="p-3 text-[#717074] .readex font-normal text-[14px]">
-                Action
-              </th>
+              <th className="p-3 text-gray-500 font-medium">#</th>
+              <th className="p-3 text-gray-500 font-medium">Doctor ID</th>
+              <th className="p-3 text-gray-500 font-medium">Name</th>
+              <th className="p-3 text-gray-500 font-medium">Department</th>
+              <th className="p-3 text-gray-500 font-medium">Status</th>
+              <th className="p-3 text-gray-500 font-medium">Phone no</th>
+              <th className="p-3 text-gray-500 font-medium">Action</th>
             </tr>
           </thead>
           <tbody>
             {staffData.map((staff, i) => (
               <tr
                 key={i}
-                className="border border-[#A49F9F] hover:bg-gray-50 transition-colors"
+                className="border-b hover:bg-gray-50 transition-colors"
               >
                 <td className="p-3">
                   <input type="checkbox" />
                 </td>
-                <td className="p-3 text-[#717074] .readex text-[14px] font-normal">
-                  {staff.id}
-                </td>
-                <td className="p-3 flex items-center gap-2 text-[#838383] .readex text-[14px] font-normal leading-normal">
+                <td className="p-3 text-gray-700">{staff.id}</td>
+                <td className="p-3 flex items-center gap-2 text-gray-700">
                   <img
                     src={staff.avatar}
                     alt={staff.name}
@@ -226,19 +122,13 @@ export default function DoctorsStaff() {
                   />
                   {staff.name}
                 </td>
-                <td className="p-3 text-[#717074] text-[14px] .readex font-normal">
-                  {staff.dept}
-                </td>
-
+                <td className="p-3 text-gray-700">{staff.dept}</td>
                 <td className="p-3">
                   <StatusBadge status={staff.status} />
                 </td>
-
-                <td className="p-3 text-[#717074] text-[14px] font-normal .readex">
-                  {staff.phone}
-                </td>
+                <td className="p-3 text-gray-700">{staff.phone}</td>
                 <td className="p-3">
-                  <button>
+                  <button className="p-1 rounded hover:bg-gray-100">
                     <FiMoreVertical />
                   </button>
                 </td>
@@ -249,25 +139,24 @@ export default function DoctorsStaff() {
       </div>
 
       {/* Pagination */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-4 text-[14px] text-[#2C2C2C] font-normal .readex">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-4 text-sm text-gray-700">
         <p>1-12 of 2,060 items</p>
 
         <div className="flex items-center gap-3">
-          <button className="p-4 border border-[#838383] rounded-[28px] bg-[#FFF] hover:bg-gray-100 w-[28px] h-[28px] justify-center items-center">
+          <button className="p-2 border rounded-full bg-white hover:bg-gray-100">
             <BsChevronLeft />
           </button>
-          <span className="text-[#2C2C2C] font-normal text-[14px] .readex">
+          <span>
             Page <b>1</b> of 50
           </span>
-          <button className="p-4 border border-[#838383] rounded-[28px] bg-[#FFF] hover:bg-gray-100 w-[28px] h-[28px] justify-center items-center">
+          <button className="p-2 border rounded-full bg-white hover:bg-gray-100">
             <BsChevronRight />
           </button>
         </div>
+
         <div className="flex items-center gap-2">
-          <span className="text-[#2C2C2C] font-normal text-[14px] .readex leading-normal">
-            Show
-          </span>
-          <select className="border border-[#838383] rounded-[8px] bg-[#fff] py-2 px-3">
+          <span>Show</span>
+          <select className="border rounded-lg bg-white py-1 px-2 text-sm">
             <option>12</option>
             <option>24</option>
             <option>50</option>
@@ -277,6 +166,3 @@ export default function DoctorsStaff() {
     </div>
   );
 }
-
-
-

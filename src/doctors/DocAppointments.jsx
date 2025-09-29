@@ -147,7 +147,6 @@
 // };
 
 // export default DocAppointments;
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ import navigation hook
 
@@ -212,16 +211,17 @@ const DocAppointments = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <h2 className="text-lg font-semibold">Patient Queue</h2>
 
-          <div className="flex flex-col md:flex-row gap-2">
+          {/* Search + Filter */}
+          <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
             <input
               type="text"
               placeholder="Search"
-              className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring w-full md:w-48"
+              className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring w-full sm:w-48"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
             <select
-              className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring"
+              className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring w-full sm:w-52"
               value={filterDay}
               onChange={(e) => setFilterDay(e.target.value)}
             >
@@ -235,7 +235,7 @@ const DocAppointments = () => {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
+          <table className="w-full text-sm border-collapse min-w-[600px]">
             <thead>
               <tr className="bg-gray-100 text-left text-gray-600">
                 <th className="p-3">Name</th>
@@ -247,14 +247,17 @@ const DocAppointments = () => {
             </thead>
             <tbody>
               {filteredPatients.map((p) => (
-                <tr key={p.id} className="border-b hover:bg-gray-50">
+                <tr
+                  key={p.id}
+                  className="border-b hover:bg-gray-50 transition-colors"
+                >
                   <td className="p-3 flex items-center gap-2">
                     {/* ✅ Clickable Avatar */}
                     <div
-                      className="w-8 h-8 rounded-full bg-purple-200 cursor-pointer hover:ring-2 hover:ring-purple-400"
+                      className="w-8 h-8 rounded-full bg-purple-200 cursor-pointer hover:ring-2 hover:ring-purple-400 shrink-0"
                       onClick={() => navigate(`/patient-profile/${p.id}`)}
                     ></div>
-                    {p.name}
+                    <span className="truncate">{p.name}</span>
                   </td>
                   <td className="p-3">{p.day}</td>
                   <td className="p-3">{p.phone}</td>
@@ -275,14 +278,20 @@ const DocAppointments = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-600 gap-2">
           <span>
             Showing {filteredPatients.length} of {patients.length}
           </span>
           <div className="flex gap-2">
-            <button className="px-3 py-1 border rounded">1</button>
-            <button className="px-3 py-1 border rounded">2</button>
-            <button className="px-3 py-1 border rounded">3</button>
+            <button className="px-3 py-1 border rounded hover:bg-gray-100">
+              1
+            </button>
+            <button className="px-3 py-1 border rounded hover:bg-gray-100">
+              2
+            </button>
+            <button className="px-3 py-1 border rounded hover:bg-gray-100">
+              3
+            </button>
           </div>
         </div>
       </div>

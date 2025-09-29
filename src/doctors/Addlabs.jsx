@@ -7,12 +7,12 @@ export default function Addlabs({ isOpen, onClose }) {
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Background Blur */}
       <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-xl w-[90%] max-w-md p-6 z-50">
+      <div className="relative bg-white rounded-xl shadow-xl w-[95%] sm:w-[90%] md:w-[80%] lg:max-w-lg p-4 sm:p-6 md:p-8 z-50">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -22,28 +22,30 @@ export default function Addlabs({ isOpen, onClose }) {
         </button>
 
         {/* Modal Title */}
-        <h2 className="text-lg font-semibold mb-4">Request Lab</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 text-center">
+          Request Lab
+        </h2>
 
         {/* Form */}
-        <form className="flex flex-col space-y-4">
+        <form className="flex flex-col space-y-4 text-sm sm:text-base">
           {/* Title Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block font-medium text-gray-700 mb-1">
               Title
             </label>
             <input
               type="text"
               placeholder="Test For Diabetes"
-              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base"
             />
           </div>
 
           {/* Status Dropdown */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block font-medium text-gray-700 mb-1">
               Status
             </label>
-            <select className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <select className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm sm:text-base">
               <option>Status</option>
               <option>Pending</option>
               <option>Completed</option>
@@ -53,20 +55,20 @@ export default function Addlabs({ isOpen, onClose }) {
 
           {/* Notes Textarea */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block font-medium text-gray-700 mb-1">
               Lab Request Details
             </label>
             <textarea
-              rows="6"
+              rows="5"
               placeholder="Write lab request details here..."
-              className="mt-1 w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y text-sm sm:text-base"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="button"
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="w-full py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm sm:text-base font-medium transition"
             onClick={onClose}
           >
             Send to Lab

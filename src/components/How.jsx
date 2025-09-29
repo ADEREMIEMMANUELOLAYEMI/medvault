@@ -1,32 +1,31 @@
-// src/pages/HowItWorks.jsx
 import React from "react";
 import { Icon } from "@iconify/react";
 
-import Receiptionist from "../assets/images/receiptionist.png"
+import Receiptionist from "../assets/images/receiptionist.png";
 
 const steps = [
   {
-    icon: "eos-icons:system-re-registered", // ✅ works
+    icon: "eos-icons:system-re-registered",
     title: "Register or login",
     desc: "Access the hospital management system through the web or mobile app.",
   },
   {
-    icon: "mdi:password-outline", // ✅ works
+    icon: "mdi:password-outline",
     title: "Enter Your Credentials",
     desc: "Provide your Email / Staff ID / Patient ID and Password in the login form.",
   },
   {
-    icon: "uiw:verification", // ✅ works
+    icon: "uiw:verification",
     title: "Role Verification",
     desc: "The system detects your role (Patient, Doctor, Nurse, Lab, Admin) and grants the right access.",
   },
   {
-    icon: "ri:secure-payment-fill", // ✅ works
+    icon: "ri:secure-payment-fill",
     title: "Subscription",
     desc: "Pay a subscription fee to access our software services.",
   },
   {
-    icon: "bx:universal-access", // ✅ works
+    icon: "bx:universal-access",
     title: "Dashboard Access",
     desc: "You are redirected to your personalized dashboard with the tools and information you need.",
   },
@@ -34,43 +33,43 @@ const steps = [
 
 const How = () => {
   return (
-    <main className="bg-white px-6 md:px-20 lg:px-32 py-16">
+    <main className="bg-white px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 py-16 overflow-x-hidden">
       {/* Section Heading */}
-      <section className="text-center mb-[12px]">
-        <h2 className="md:text-3xl text-[32px] mt-[40px] text-[#000] inter font-medium leading-[42px] tracking-tight">
+      <section className="text-center mb-12">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl mt-10 text-[#000] font-semibold leading-snug tracking-tight">
           How it Works
         </h2>
-        <p className="text-[#2E2E2E] max-w-2xl mx-auto text-[20px] leading-[32px] font-normal inter mt-4 mb-[64px]">
-          <span className="block whitespace-nowrap inter">
+        <p className="text-[#2E2E2E] max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed font-normal mt-4 mb-12">
+          <span className="block">
             Connecting every hospital and patient with one secure ID — making
             healthcare seamless,
           </span>
-          <span className="block inter">
+          <span className="block">
             transparent, and accessible anytime, anywhere.
           </span>
         </p>
       </section>
 
       {/* Content Grid */}
-      <div className="grid md:grid-cols-2 items-center gap-12">
+      <div className="grid md:grid-cols-2 items-center gap-10 md:gap-16 lg:gap-20">
         {/* Left Side - Steps */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {steps.map((step, index) => (
-            <div key={index} className="flex items-start gap-[16px]">
+            <div key={index} className="flex items-start gap-4">
               {/* Icon */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1B36A733] flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#1B36A733] flex items-center justify-center">
                 <Icon
                   icon={step.icon}
-                  className="text-[#100C8D] text-xl h-[25px] w-[27.5px] "
+                  className="text-[#100C8D] h-6 w-6 md:h-7 md:w-7"
                 />
               </div>
 
               {/* Text */}
               <div>
-                <h3 className="font-medium text-[#000] text-[24px] leading-[25px] inter">
+                <h3 className="font-medium text-[#000] text-lg sm:text-xl md:text-2xl leading-tight">
                   {step.title}
                 </h3>
-                <p className="text-[#464255] text-[16px] leading-[24px] font-normal mt-[8px] inter mb-[40px]">
+                <p className="text-[#464255] text-sm sm:text-base md:text-lg leading-relaxed font-normal mt-2">
                   {step.desc}
                 </p>
               </div>
@@ -83,7 +82,7 @@ const How = () => {
           <img
             src={Receiptionist}
             alt="How it works"
-            className="rounded-[8px] shadow-md max-w-full w-full h-auto"
+            className="rounded-lg shadow-md w-full max-w-md md:max-w-lg lg:max-w-xl h-auto object-contain"
           />
         </div>
       </div>
@@ -92,5 +91,3 @@ const How = () => {
 };
 
 export default How;
-
-

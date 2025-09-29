@@ -1,7 +1,7 @@
 // src/pages/PatientSignup.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import Patient from '../assets/images/patience.png'; // ✅ single image
+import Patient from '../assets/images/patient.png'; // ✅ single image
 
 const PatientSignup = () => {
   return (
